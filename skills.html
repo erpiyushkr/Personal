@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piyush Kumar - Technical Expertise</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script src="site-init.js"></script>
+
+    <style>
+        /* Mathematical Grid Background - Adapts to theme */
+        .grid-bg {
+            background-image:
+                linear-gradient(to right, rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        main {
+            padding-top: calc(var(--navbar-height) + 1.5rem);
+            padding-bottom: 5rem;
+        }
+
+        /* Card Styles with Theme Support */
+        .skill-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .dark .skill-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dark .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #8b5cf6);
+            transition: width 1.5s ease-out;
+        }
+
+        .filter-btn {
+            white-space: nowrap;
+            color: #64748b;
+        }
+
+        .dark .filter-btn {
+            color: #94a3b8;
+        }
+
+        .filter-btn.active {
+            background: #2563eb;
+            color: white !important;
+            border-color: #2563eb;
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
+
+    <div class="relative min-h-screen grid-bg flex flex-col">
+        <main class="flex-grow">
+            <div class="section-container text-center mb-10 animate-fade-in">
+                <div class="flex justify-center items-center gap-3 mb-3">
+                    <div class="w-8 h-[1px] bg-primary"></div>
+                    <span class="text-primary font-bold tracking-[0.2em] uppercase text-[10px]">My Arsenal</span>
+                    <div class="w-8 h-[1px] bg-primary"></div>
+                </div>
+                <h1 class="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white mb-4">Technical Expertise</h1>
+                <p class="max-w-xl mx-auto text-slate-500 dark:text-slate-400 text-sm lg:text-base leading-relaxed">
+                    A curated network of technologies I leverage to build scalable,
+                    high-performance digital experiences.
+                </p>
+                <br>
+            </div>
+
+            <div class="section-container mb-10">
+                <div class="flex items-center justify-center gap-2 lg:gap-3 overflow-x-auto pb-4 no-scrollbar">
+                    <button
+                        class="filter-btn active px-4 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all hover:border-primary"
+                        onclick="filterSkills('all', this)">Show All</button>
+                    <button
+                        class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all hover:border-primary"
+                        onclick="filterSkills('programming', this)">Programming</button>
+                    <button
+                        class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all hover:border-primary"
+                        onclick="filterSkills('fundamentals', this)">CS Fundamentals</button>
+                    <button
+                        class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all hover:border-primary"
+                        onclick="filterSkills('web', this)">Web Dev</button>
+                    <button
+                        class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all hover:border-primary"
+                        onclick="filterSkills('ai', this)">AI/ML</button>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="projects.html"
+                    class="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all font-bold text-sm group shadow-md">
+                    View My Projects
+                    <span
+                        class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const skillData = [
+            { name: "C++", level: "Advanced", levelNum: 90, desc: "Solved 700+ DSA problems on LeetCode.", cat: "programming", icon: "terminal" },
+            { name: "Python", level: "Expert", levelNum: 95, desc: "AI modeling and OCR document parsing[cite: 22, 25].", cat: "programming", icon: "code" },
+            { name: "React.js", level: "Intermediate", levelNum: 75, desc: "Building modern, responsive frontend architectures[cite: 4].", cat: "web", icon: "view_quilt" },
+            { name: "TensorFlow", level: "Advanced", levelNum: 85, desc: "Neural networks for predictive modeling[cite: 6, 33].", cat: "ai", icon: "psychology" },
+            { name: "CS Fundamentals", level: "Expert", levelNum: 98, desc: "Expertise in DSA, OOPs, and Operating Systems[cite: 5].", cat: "fundamentals", icon: "account_tree" },
+            { name: "HTML5 & CSS3", level: "Expert", levelNum: 98, desc: "Semantic markup and responsive design.", cat: "web", icon: "html" },
+            { name: "Cloud & Git", level: "Intermediate", levelNum: 75, desc: "Version control and cloud computing tools[cite: 8].", cat: "fundamentals", icon: "cloud" },
+            { name: "Data Analytics", level: "Advanced", levelNum: 88, desc: "Pandas and Power BI visualization[cite: 7, 33].", cat: "ai", icon: "analytics" }
+        ];
+
+        function renderSkills(category = 'all') {
+            const grid = document.getElementById('skills-grid');
+            grid.innerHTML = '';
+            const filtered = category === 'all' ? skillData : skillData.filter(s => s.cat === category);
+
+            filtered.forEach((skill, index) => {
+                const card = `
+                    <div class="skill-card p-4 rounded-xl animate-fade-in" style="animation-delay: ${index * 0.05}s">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="p-2 bg-primary/10 rounded-lg text-primary">
+                                <span class="material-symbols-outlined text-xl">${skill.icon}</span>
+                            </div>
+                            <span class="text-[8px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded border border-primary/30 text-primary bg-primary/5">
+                                ${skill.level}
+                            </span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">${skill.name}</h3>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">${skill.desc}</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${skill.levelNum}%"></div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function filterSkills(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderSkills(cat);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSkills();
+
+            // Sync theme on load
+            if (localStorage.getItem('theme') === 'dark' ||
+                (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            // Highlight only 'Skills' in the navbar
+            setTimeout(() => {
+                const navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(link => {
+                    const text = link.textContent.trim().toLowerCase();
+                    if (text === 'skills') {
+                        link.style.color = '#2563eb';
+                        link.classList.add('font-bold');
+                    } else {
+                        link.style.color = '';
+                        link.classList.remove('font-bold');
+                    }
+                });
+            }, 200);
+        });
+    </script>
+</body>
+
+</html>
