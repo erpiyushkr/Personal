@@ -30,9 +30,9 @@ const siteHeaderHTML = `
         <button id="closeMenu" class="p-2"><span class="material-symbols-outlined">close</span></button>
     </div>
     <nav class="flex flex-col gap-4">
-        <a class="text-lg font-medium hover:text-primary py-2" href="index.html">Home</a>
-        <a class="text-lg font-medium hover:text-primary py-2" href="about.html">About</a>
-        <a class="text-lg font-medium hover:text-primary py-2" href="#skills">Skills</a>
+        <a class="text-lg font-medium hover:text-primary py-2" href="../index.html">Home</a>
+        <a class="text-lg font-medium hover:text-primary py-2" href="../about.html">About</a>
+        <a class="text-lg font-medium hover:text-primary py-2" href="../skills.html">Skills</a>
         <a class="text-lg font-medium hover:text-primary py-2" href="#experience">Experience</a>
         <a class="text-lg font-medium hover:text-primary py-2" href="#education">Education</a>
         <a class="text-lg font-medium hover:text-primary py-2" href="#projects">Projects</a>
@@ -50,9 +50,9 @@ const siteHeaderHTML = `
                 <h1 class="text-lg font-bold tracking-tight">Piyush Kumar</h1>
             </div>
             <nav class="hidden md:flex items-center gap-4 lg:gap-6">
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="about.html">About</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="skills.html">Skills</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="../index.html">Home</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="../about.html">About</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="../skills.html">Skills</a>
                 <a class="text-sm font-medium hover:text-primary transition-colors" href="#experience">Experience</a>
                 <a class="text-sm font-medium hover:text-primary transition-colors" href="#education">Education</a>
                 <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projects</a>
